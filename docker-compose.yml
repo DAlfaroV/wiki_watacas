@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  mediawiki:
+    image: mediawiki
+    ports:
+      - "8080:80"
+    environment:
+      - MEDIAWIKI_DB_TYPE=sqlite
+      - MEDIAWIKI_DB_NAME=/var/www/html/data/mediawiki.sqlite
+    volumes:
+      - mediawiki_images:/var/www/html/images
+      - mediawiki_data:/var/www/html/data
+    restart: always
+
+volumes:
+  mediawiki_images:
+  mediawiki_data:
